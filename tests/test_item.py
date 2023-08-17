@@ -5,6 +5,32 @@ from src.item import Item
 @pytest.fixture
 
 
+def src_string():
+    src_string = Item("",0, 0)
+    return src_string
+def test_string_to_number(src_string):
+    assert src_string.string_to_number("10.0") == 10
+    assert src_string.string_to_number("0.0") == 0
+    assert src_string.string_to_number("10.265") == 10
+    assert src_string.string_to_number("5.5") == 5
+
+
+@pytest.fixture
+
+
+def src_name():
+    src_name = Item("_",0, 0)
+    return src_name
+
+def test_name(src_name):
+    src_name.name = "СуперСмартфон"
+    assert src_name.name == "СуперСмарт"
+    src_name.name = "Телевизор"
+    assert src_name.name == "Телевизор"
+
+@pytest.fixture
+
+
 def src_items1():
     item1 = Item("Смартфон", 10000, 20)
     return item1
@@ -36,3 +62,9 @@ def test_calculate_total_price2(src_items2):
 def test_apply_discount2(src_items2):
     Item.pay_rate = 0.5
     assert src_items2.apply_discount() == 10000
+
+
+
+
+
+

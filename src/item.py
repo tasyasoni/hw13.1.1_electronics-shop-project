@@ -22,9 +22,8 @@ class Item:
         Item.all.append(self)
 
 
-
     @property
-    def name (self):
+    def name(self):
         return self.__name
 
     @name.setter
