@@ -5,6 +5,23 @@ from src.item import Item
 @pytest.fixture
 
 
+def src_inf():
+    src_inf = Item("Супер-пупер-смарт",34700, 1)
+    return src_inf
+
+def test_repr(src_inf):
+    assert repr(src_inf) == "Item('Супер-пупер-смарт', 34700, 1)"
+
+
+
+def test_str(src_inf):
+    assert str(src_inf) == "Супер-пупер-смарт"
+
+
+
+@pytest.fixture
+
+
 def src_string():
     src_string = Item("",0, 0)
     return src_string
