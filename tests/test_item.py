@@ -18,6 +18,9 @@ def test_str(src_inf):
     assert str(src_inf) == "Супер-пупер-смарт"
 
 
+def test_add(src_inf):
+    assert src_inf.__add__ (7850) == "Объект не принадлежит к Phone` или `Item` классу"
+
 
 @pytest.fixture
 
