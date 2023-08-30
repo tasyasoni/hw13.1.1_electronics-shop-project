@@ -2,12 +2,9 @@ import csv
 
 
 class InstantiateCSVError(Exception):
-    def __init__(self, *args,**kwargs):
-        if KeyError:
-            print ('_Файл item.csv поврежден_')
-        else:
-            self.message =  args[0] if args else 'Фигня какая то'
 
+    def __init__(self, *args, **kwargs):
+        self.message = ("_Файл item.csv поврежден_")
 
 
 
@@ -81,14 +78,14 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         try:
-            file = open('item.csv')
+            file = open('items.csv')
         except FileNotFoundError:
             print('_Отсутствует файл item.csv_')
         finally:
             with open('../src/item1.csv') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for line in reader:
-                    if line["quantity"]:
+                    if not "quantity" in reader:
                         raise InstantiateCSVError
                     else:
                         item = cls(line['name'], line['price'], line["quantity"])
@@ -103,5 +100,8 @@ class Item:
 
 
 
-
-
+if __name__ == '__main__':
+    try:
+        Item.instantiate_from_csv()
+    except InstantiateCSVError as ex:
+        print(ex.message)
