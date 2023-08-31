@@ -2,6 +2,11 @@ import pytest
 from src.item import Item
 
 
+def test_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        open('../src/item.csv')
+
+
 @pytest.fixture
 
 
